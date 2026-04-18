@@ -1,0 +1,54 @@
+// ─── Color Palette ───────────────────────────────────────────────────────────
+$cream:         #F4EDE4;
+$cream-dark:    #EAE0D4;
+$parchment:     #DDD0BB;
+$warm-white:    #FAF7F3;
+$gold:          #B8935A;
+$gold-light:    #D4AE78;
+$rose-dust:     #C4A08A;
+$charcoal:      #1C1815;
+$charcoal-soft: #2E2922;
+$charcoal-mid:  #4A4038;
+$fog-blue:      #8A9BAA;
+$fog-light:     #C2CDD5;
+$sage:          #9AAB96;
+$blush:         #E8CFC4;
+
+// ─── Typography ──────────────────────────────────────────────────────────────
+$font-display: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+$font-body:    'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+
+// ─── Spacing (8pt grid) ──────────────────────────────────────────────────────
+$sp-1:  0.5rem;
+$sp-2:  1rem;
+$sp-3:  1.5rem;
+$sp-4:  2rem;
+$sp-6:  3rem;
+$sp-8:  4rem;
+$sp-12: 6rem;
+$sp-16: 8rem;
+$sp-20: 10rem;
+
+// ─── Breakpoints ─────────────────────────────────────────────────────────────
+$bp-mobile:  480px;
+$bp-tablet:  768px;
+$bp-desktop: 1024px;
+$bp-wide:    1440px;
+
+// ─── Z-Index Stack ───────────────────────────────────────────────────────────
+$z-lightbox: 800;
+$z-music:    700;
+$z-grain:    600;
+$z-overlay:  200;
+$z-above:    100;
+$z-base:     1;
+
+// ─── Easing ──────────────────────────────────────────────────────────────────
+$ease-out-expo:    cubic-bezier(0.16, 1, 0.3, 1);
+$ease-in-out-circ: cubic-bezier(0.85, 0, 0.15, 1);
+$ease-film:        cubic-bezier(0.4, 0, 0.2, 1);
+
+$dur-fast:      0.25s;
+$dur-medium:    0.5s;
+$dur-slow:      0.9s;
+$dur-cinematic: 1.4s;

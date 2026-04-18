@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+
+# Nuxt build outputs
+.nuxt/
+.output/
+
+# env
+.env
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# local tool metadata
+.claude/

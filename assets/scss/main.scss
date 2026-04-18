@@ -1,0 +1,77 @@
+@import 'reset';
+@import 'typography';
+
+// ─── CSS Custom Properties ───────────────────────────────────────────────────
+:root {
+  --cream:         #{$cream};
+  --cream-dark:    #{$cream-dark};
+  --parchment:     #{$parchment};
+  --warm-white:    #{$warm-white};
+  --gold:          #{$gold};
+  --gold-light:    #{$gold-light};
+  --rose-dust:     #{$rose-dust};
+  --charcoal:      #{$charcoal};
+  --charcoal-soft: #{$charcoal-soft};
+  --charcoal-mid:  #{$charcoal-mid};
+  --fog-blue:      #{$fog-blue};
+  --fog-light:     #{$fog-light};
+  --sage:          #{$sage};
+  --blush:         #{$blush};
+
+  --font-display:  #{$font-display};
+  --font-body:     #{$font-body};
+
+  --ease-expo:     #{$ease-out-expo};
+  --ease-film:     #{$ease-film};
+}
+
+// ─── Global ──────────────────────────────────────────────────────────────────
+html,
+body {
+  background-color: var(--cream);
+  color: var(--charcoal);
+  font-family: var(--font-body);
+}
+
+// Film grain overlay — applied globally via fixed pseudo-element on body
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: #{$z-grain};
+  opacity: 0.045;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+// ─── Section Base ────────────────────────────────────────────────────────────
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+// ─── Divider Line ────────────────────────────────────────────────────────────
+.divider {
+  width: 1px;
+  height: 4rem;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  margin: 0 auto;
+}
+
+// ─── Scroll-triggered opacity (initial hidden state) ─────────────────────────
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+// ─── Max width container ─────────────────────────────────────────────────────
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $sp-3;
+
+  @include tablet-up  { padding: 0 $sp-6; }
+  @include desktop-up { padding: 0 $sp-8; }
+}

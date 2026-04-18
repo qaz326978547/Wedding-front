@@ -1,0 +1,52 @@
+// ─── Display (Cormorant Garamond) ────────────────────────────────────────────
+.t-display {
+  font-family: $font-display;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.t-display--xl {
+  font-family: $font-display;
+  font-size: clamp(3.5rem, 12vw, 9rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.t-heading {
+  font-family: $font-display;
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.t-subheading {
+  font-family: $font-display;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+// ─── Body (DM Sans) ──────────────────────────────────────────────────────────
+.t-body {
+  font-family: $font-body;
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+.t-label {
+  font-family: $font-body;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+// ─── Special ─────────────────────────────────────────────────────────────────
+.t-gold    { color: var(--gold); }
+.t-cream   { color: var(--cream); }
+.t-charcoal { color: var(--charcoal); }
+.t-center  { text-align: center; }

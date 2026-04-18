@@ -1,0 +1,72 @@
+// ─── Responsive ──────────────────────────────────────────────────────────────
+@mixin mobile-only { @media (max-width: #{$bp-tablet - 1}) { @content; } }
+@mixin tablet-up   { @media (min-width: #{$bp-tablet}) { @content; } }
+@mixin desktop-up  { @media (min-width: #{$bp-desktop}) { @content; } }
+@mixin wide-up     { @media (min-width: #{$bp-wide}) { @content; } }
+
+// ─── Layout ──────────────────────────────────────────────────────────────────
+@mixin cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-col-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+// ─── Section Padding ─────────────────────────────────────────────────────────
+@mixin section-padding {
+  padding: $sp-12 $sp-3;
+
+  @include tablet-up  { padding: $sp-16 $sp-6; }
+  @include desktop-up { padding: $sp-20 $sp-8; }
+}
+
+// ─── Image ───────────────────────────────────────────────────────────────────
+@mixin img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+// ─── Text ────────────────────────────────────────────────────────────────────
+@mixin text-label {
+  font-family: $font-body;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+// ─── Visual ──────────────────────────────────────────────────────────────────
+@mixin overlay($color: rgba(0, 0, 0, 0.35)) {
+  position: absolute;
+  inset: 0;
+  background: $color;
+  pointer-events: none;
+}
+
+@mixin overlay-gradient($dir: to top, $start: rgba(0,0,0,0.6), $end: transparent) {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient($dir, $start, $end);
+  pointer-events: none;
+}
+
+@mixin card-base {
+  background: $warm-white;
+  border: 1px solid rgba($parchment, 0.6);
+  border-radius: 2px;
+}
