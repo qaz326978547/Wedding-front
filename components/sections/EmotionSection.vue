@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import gsap from 'gsap'
 import { photos, signs } from '~/wedding.config'
 
 const sectionRef = ref<HTMLElement | null>(null)
@@ -6,10 +8,7 @@ const signRef = ref<HTMLElement | null>(null)
 const photoRef = ref<HTMLElement | null>(null)
 
 onMounted(() => {
-  const { $gsap, $ScrollTrigger } = useNuxtApp()
-
-  // Parallax on photo
-  $gsap.to(photoRef.value, {
+  gsap.to(photoRef.value, {
     scrollTrigger: {
       trigger: sectionRef.value,
       start: 'top bottom',
@@ -20,8 +19,7 @@ onMounted(() => {
     ease: 'none',
   })
 
-  // Love You sign reveal
-  $gsap.from(signRef.value, {
+  gsap.from(signRef.value, {
     scrollTrigger: {
       trigger: sectionRef.value,
       start: 'top 60%',
@@ -46,7 +44,6 @@ onMounted(() => {
       />
     </div>
 
-    <!-- Warm tone overlay -->
     <div class="emotion__warm-overlay" />
     <div class="emotion__gradient" />
 
@@ -82,11 +79,10 @@ onMounted(() => {
     @include img-cover;
     object-position: center 30%;
     width: 100%;
-    height: 120%; // extra height for parallax
+    height: 120%;
     object-fit: cover;
   }
 
-  // Warm sepia-ish overlay
   &__warm-overlay {
     @include overlay(rgba(180, 100, 60, 0.18));
     z-index: $z-above;

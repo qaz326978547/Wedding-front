@@ -1,13 +1,13 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import gsap from 'gsap'
 import { wedding, photos, signs } from '~/wedding.config'
 
 const sectionRef = ref<HTMLElement | null>(null)
 const signRef = ref<HTMLElement | null>(null)
 
 onMounted(() => {
-  const { $gsap } = useNuxtApp()
-
-  $gsap.from(signRef.value, {
+  gsap.from(signRef.value, {
     scrollTrigger: { trigger: sectionRef.value, start: 'top 65%', once: true },
     opacity: 0,
     scale: 0.9,
@@ -15,7 +15,7 @@ onMounted(() => {
     ease: 'power3.out',
   })
 
-  $gsap.from('.footer__text-group > *', {
+  gsap.from('.footer__text-group > *', {
     scrollTrigger: { trigger: sectionRef.value, start: 'top 65%', once: true },
     opacity: 0,
     y: 30,

@@ -3,19 +3,25 @@ import type { RsvpForm } from '~/types'
 export function createApi(baseURL: string) {
   return {
     async submitRsvp(form: RsvpForm) {
-      return await $fetch('/rsvp', {
+      const res = await fetch(`${baseURL}/rsvp`, {
         method: 'POST',
-        baseURL,
-        body: form,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
       })
+      if (!res.ok) throw new Error(await res.text())
+      return res.json()
     },
 
     async getGallery() {
-      return await $fetch('/gallery', { baseURL })
+      const res = await fetch(`${baseURL}/gallery`)
+      if (!res.ok) throw new Error('Failed to fetch gallery')
+      return res.json()
     },
 
     async getWeddingInfo() {
-      return await $fetch('/wedding-info', { baseURL })
+      const res = await fetch(`${baseURL}/wedding-info`)
+      if (!res.ok) throw new Error('Failed to fetch wedding info')
+      return res.json()
     },
   }
 }

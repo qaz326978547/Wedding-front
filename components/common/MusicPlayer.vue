@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
 import { wedding } from '~/wedding.config'
 
 const audioRef = ref<HTMLAudioElement | null>(null)
 const playing = ref(false)
-const ready = ref(false)
 const started = ref(false)
 
 async function startPlay() {
@@ -33,12 +33,11 @@ onMounted(() => {
   if (!audioRef.value) return
 
   audioRef.value.volume = 0.45
-  audioRef.value.addEventListener('canplay', () => { ready.value = true })
   audioRef.value.addEventListener('ended', () => { playing.value = false })
 
   const events = ['click', 'scroll', 'touchstart', 'keydown'] as const
   events.forEach(ev =>
-    document.addEventListener(ev, startPlay, { once: true, passive: true })
+    document.addEventListener(ev, startPlay, { once: true, passive: true }),
   )
 
   onUnmounted(() => {

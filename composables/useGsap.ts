@@ -1,8 +1,8 @@
 import type { Ref } from 'vue'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 export function useGsap() {
-  const { $gsap, $ScrollTrigger } = useNuxtApp()
-
   function animateFadeUp(
     targets: Ref<HTMLElement | null> | string,
     options: { delay?: number; stagger?: number; duration?: number } = {},
@@ -10,7 +10,7 @@ export function useGsap() {
     const el = typeof targets === 'string' ? targets : targets.value
     if (!el) return
 
-    $gsap.from(el, {
+    gsap.from(el, {
       opacity: 0,
       y: 50,
       duration: options.duration ?? 1,
@@ -28,7 +28,7 @@ export function useGsap() {
     const triggerEl = typeof trigger === 'string' ? trigger : trigger.value
     if (!triggerEl) return
 
-    $gsap.from(targets, {
+    gsap.from(targets, {
       scrollTrigger: {
         trigger: triggerEl,
         start: 'top 80%',
@@ -43,8 +43,8 @@ export function useGsap() {
   }
 
   function killScrollTriggers() {
-    $ScrollTrigger.getAll().forEach((t: any) => t.kill())
+    ScrollTrigger.getAll().forEach(t => t.kill())
   }
 
-  return { $gsap, $ScrollTrigger, animateFadeUp, animateScrollReveal, killScrollTriggers }
+  return { gsap, ScrollTrigger, animateFadeUp, animateScrollReveal, killScrollTriggers }
 }

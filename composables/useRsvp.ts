@@ -1,9 +1,10 @@
+import { reactive, ref } from 'vue'
 import type { RsvpForm } from '~/types'
 import { createApi } from '~/utils/api'
 
 export function useRsvp() {
-  const config = useRuntimeConfig()
-  const api = createApi(config.public.apiBase)
+  const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api'
+  const api = createApi(apiBase)
 
   const form = reactive<RsvpForm>({
     name: '',

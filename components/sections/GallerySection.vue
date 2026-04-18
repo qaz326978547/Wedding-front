@@ -1,11 +1,14 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import gsap from 'gsap'
+import { useGallery } from '~/composables/useGallery'
+import ImageLightbox from '~/components/common/ImageLightbox.vue'
+
 const gallery = useGallery()
 const sectionRef = ref<HTMLElement | null>(null)
 
 onMounted(() => {
-  const { $gsap } = useNuxtApp()
-
-  $gsap.from('.gallery__item', {
+  gsap.from('.gallery__item', {
     scrollTrigger: { trigger: sectionRef.value, start: 'top 80%', once: true },
     opacity: 0,
     scale: 0.94,
@@ -46,7 +49,6 @@ onMounted(() => {
       </div>
     </div>
 
-    <!-- Lightbox -->
     <ImageLightbox
       :image="gallery.active.value"
       @close="gallery.close()"
@@ -72,7 +74,6 @@ onMounted(() => {
     @include tablet-up  { grid-template-columns: repeat(3, 1fr); gap: $sp-2; }
     @include desktop-up { grid-template-columns: repeat(4, 1fr); }
 
-    // Give variety to the grid with wider tiles
     .gallery__item:nth-child(7n + 1) {
       @include tablet-up { grid-column: span 2; }
     }

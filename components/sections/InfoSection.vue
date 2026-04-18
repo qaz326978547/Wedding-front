@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import gsap from 'gsap'
 import { wedding } from '~/wedding.config'
 
 const sectionRef = ref<HTMLElement | null>(null)
 
 onMounted(() => {
-  const { $gsap } = useNuxtApp()
-
-  $gsap.from('.info-card', {
+  gsap.from('.info-card', {
     scrollTrigger: { trigger: sectionRef.value, start: 'top 75%', once: true },
     opacity: 0,
     y: 50,

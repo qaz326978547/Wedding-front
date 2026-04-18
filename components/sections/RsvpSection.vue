@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import gsap from 'gsap'
+import { useRsvp } from '~/composables/useRsvp'
+
 const { form, loading, submitted, error, submit } = useRsvp()
 const sectionRef = ref<HTMLElement | null>(null)
 
 onMounted(() => {
-  const { $gsap } = useNuxtApp()
-
-  $gsap.from('.rsvp__inner', {
+  gsap.from('.rsvp__inner', {
     scrollTrigger: { trigger: sectionRef.value, start: 'top 80%', once: true },
     opacity: 0,
     y: 60,
@@ -255,7 +257,6 @@ onMounted(() => {
   }
 }
 
-// Transition for conditional fields
 .slide-enter-active,
 .slide-leave-active {
   transition: all $dur-medium $ease-out-expo;

@@ -1,8 +1,7 @@
+import { ref } from 'vue'
 import { photos } from '~/wedding.config'
 
 export function useGallery() {
-  // 預設使用 wedding.config 的本地照片
-  // 若後端 API 可用，可透過 fetchFromApi() 替換
   const images = ref(
     photos.gallery.map((url, i) => ({
       id: i + 1,
@@ -23,16 +22,18 @@ export function useGallery() {
 
   async function fetchFromApi(apiBase: string) {
     try {
-      const res = await $fetch<any[]>('/gallery', { baseURL: apiBase })
-      if (res?.length) {
-        images.value = res.map((item, i) => ({
+      const res = await fetch(`${apiBase}/gallery`)
+      if (!res.ok) return
+      const data = await res.json()
+      if (Array.isArray(data) && data.length) {
+        images.value = data.map((item: any, i: number) => ({
           id: item.id ?? i + 1,
           url: item.url,
           alt: item.alt ?? `婚紗照 ${i + 1}`,
         }))
       }
     } catch {
-      // fallback to local photos — already set above
+      // fallback to local photos
     }
   }
 

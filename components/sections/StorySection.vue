@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import gsap from 'gsap'
 import { photos } from '~/wedding.config'
 
 const sectionRef = ref<HTMLElement | null>(null)
@@ -31,13 +33,11 @@ const chapters = [
 ]
 
 onMounted(() => {
-  const { $gsap, $ScrollTrigger } = useNuxtApp()
-
   document.querySelectorAll('.story-chapter').forEach((chapter) => {
     const text = chapter.querySelector('.story-chapter__text-wrap')
     const imgs = chapter.querySelectorAll('.story-chapter__img')
 
-    $gsap.from(text, {
+    gsap.from(text, {
       scrollTrigger: { trigger: chapter, start: 'top 75%', once: true },
       opacity: 0,
       x: -50,
@@ -45,7 +45,7 @@ onMounted(() => {
       ease: 'power3.out',
     })
 
-    $gsap.from(imgs, {
+    gsap.from(imgs, {
       scrollTrigger: { trigger: chapter, start: 'top 75%', once: true },
       opacity: 0,
       y: 60,

@@ -1,14 +1,14 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import gsap from 'gsap'
 import { wedding, photos, signs } from '~/wedding.config'
+import MusicPlayer from '~/components/common/MusicPlayer.vue'
 
 const bgRef = ref<HTMLElement | null>(null)
 const contentRef = ref<HTMLElement | null>(null)
 
 onMounted(() => {
-  const { $gsap } = useNuxtApp()
-
-  // Ken Burns — subtle background zoom
-  $gsap.to(bgRef.value, {
+  gsap.to(bgRef.value, {
     scale: 1.1,
     duration: 16,
     ease: 'none',
@@ -16,8 +16,7 @@ onMounted(() => {
     yoyo: true,
   })
 
-  // Staggered content reveal
-  $gsap.from(Array.from((contentRef.value as HTMLElement)?.children ?? []), {
+  gsap.from(Array.from((contentRef.value as HTMLElement)?.children ?? []), {
     opacity: 0,
     y: 36,
     duration: 1.6,
@@ -78,9 +77,7 @@ onMounted(() => {
     </div>
 
     <!-- Floating music player -->
-    <ClientOnly>
-      <MusicPlayer />
-    </ClientOnly>
+    <MusicPlayer />
   </section>
 </template>
 

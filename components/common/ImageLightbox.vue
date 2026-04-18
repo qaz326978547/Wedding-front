@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { onMounted, onUnmounted } from 'vue'
+
 defineProps<{
   image: { url: string; alt: string } | null
 }>()
@@ -86,7 +88,6 @@ onUnmounted(() => {
   }
 }
 
-// Transition
 .lightbox-enter-active,
 .lightbox-leave-active {
   transition: opacity $dur-medium $ease-film;
